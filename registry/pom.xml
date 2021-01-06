@@ -17,6 +17,8 @@
         <java.version>11</java.version>
         <maven.compiler.source>1.11</maven.compiler.source>
         <maven.compiler.target>1.11</maven.compiler.target>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <swagger-annotations.version>1.6.0</swagger-annotations.version>
     </properties>
 
     <dependencyManagement>
@@ -50,6 +52,16 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
