@@ -2,6 +2,7 @@ package com.globallogic.vehicle.registry.service;
 
 import com.globallogic.vehicle.registry.controller.VehicleSO;
 import com.globallogic.vehicle.registry.entities.Vehicle;
+import com.globallogic.vehicle.registry.exceptions.RegistryResourceNotFound;
 import com.globallogic.vehicle.registry.repository.RegistryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ public class RegistryService {
         Vehicle found = registryRepository.findByVin(vin);
 
         if (found == null) {
-            throw new IllegalArgumentException("No vehicle with given VIN.");
+            throw new RegistryResourceNotFound("Vehicle with given VIN does not exist.");
         }
 
         VehicleSO vehicleSO = new VehicleSO();
