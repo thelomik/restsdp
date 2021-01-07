@@ -24,32 +24,12 @@ public class RegistryService {
             throw new RegistryResourceNotFound("Vehicle with given VIN does not exist.");
         }
 
-//        VehicleSO vehicleSO = new VehicleSO();
-//        vehicleSO.setVin(found.getVin());
-//        vehicleSO.setProductionYear(found.getProductionYear());
-//        vehicleSO.setModel(found.getModel());
-//        vehicleSO.setBrand(found.getBrand());
-
         return modelMapper.map(found, VehicleSO.class);
     }
 
     public VehicleSO create(VehicleSO so) {
         Vehicle vehicle = modelMapper.map(so, Vehicle.class);
-//        Vehicle vehicle = new Vehicle();
-//        vehicle.setBrand(so.getBrand());
-//        vehicle.setModel(so.getModel());
-//        vehicle.setProductionYear(so.getProductionYear());
-//        vehicle.setVin(so.getVin());
 
-        Vehicle save = registryRepository.save(vehicle);
-
-//        VehicleSO created = new VehicleSO();
-//        created.setBrand(save.getBrand());
-//        created.setModel(save.getModel());
-//        created.setProductionYear(save.getProductionYear());
-//        created.setId(save.getId());
-//        created.setVin(save.getVin());
-
-        return modelMapper.map(save, VehicleSO.class);
+        return modelMapper.map(registryRepository.save(vehicle), VehicleSO.class);
     }
 }

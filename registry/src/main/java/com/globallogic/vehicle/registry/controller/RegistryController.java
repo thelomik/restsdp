@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/registry")
+@RequestMapping("/vehicles")
 @Slf4j
 @Api("Article Management API")
 public class RegistryController {

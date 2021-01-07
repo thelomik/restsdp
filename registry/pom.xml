@@ -20,6 +20,7 @@
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <swagger-annotations.version>1.6.0</swagger-annotations.version>
         <modelmapper.version>2.3.5</modelmapper.version>
+        <junit.version>4.13</junit.version>
     </properties>
 
     <dependencyManagement>
@@ -90,7 +91,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -28,7 +28,7 @@ public class RegistryApplicationTests {
     @Test
     public void testCreateClub_positive_ok() throws Exception {
         mockMvc
-                .perform(get("/registry/vintest").header("Content-Type", "application/json"))
+                .perform(get("/vehicles/vintest").header("Content-Type", "application/json"))
                 .andDo(print()) //
                 .andExpect(status().isOk()) //
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE)) //
