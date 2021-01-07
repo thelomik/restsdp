@@ -7,11 +7,9 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/registry")
@@ -28,8 +26,17 @@ public class RegistryController {
     @GetMapping(path = "/{vin}", produces = MediaType.APPLICATION_JSON_VALUE)
     public VehicleSO get(@PathVariable(name = "vin") String vin) {
         VehicleSO vehicleSO = registryService.get(vin);
-
         log.info("Returning vehicle={}", vehicleSO);
         return vehicleSO;
+    }
+
+
+    @ApiOperation(value = "Creates an entity.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Vehicle entry created") })
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public VehicleSO create(@RequestBody VehicleSO so) {
+        return registryService.create(so);
     }
 }

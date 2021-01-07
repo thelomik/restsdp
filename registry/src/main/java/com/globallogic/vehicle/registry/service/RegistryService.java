@@ -29,4 +29,21 @@ public class RegistryService {
         return vehicleSO;
     }
 
+    public VehicleSO create(VehicleSO so) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setBrand(so.getBrand());
+        vehicle.setModel(so.getModel());
+        vehicle.setProductionYear(so.getProductionYear());
+        vehicle.setVin(so.getVin());
+
+        Vehicle save = registryRepository.save(vehicle);
+        VehicleSO created = new VehicleSO();
+        created.setBrand(save.getBrand());
+        created.setModel(save.getModel());
+        created.setProductionYear(save.getProductionYear());
+        created.setId(save.getId());
+        created.setVin(save.getVin());
+
+        return created;
+    }
 }
